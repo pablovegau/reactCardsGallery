@@ -1,0 +1,16 @@
+{
+  "name": "reactcardsgallery",
+  "version": "1.0.0",
+  "description": "Card gallery created with React",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint \"**/*.{js,jsx}\"",
+    "validate": "npm run lint"
+  },
+  "author": "Pablo Vega Uceta",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^5.15.1",
+    "eslint-plugin-react": "^7.12.4"
+  }
+}
