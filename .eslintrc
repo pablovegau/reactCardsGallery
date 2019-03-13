@@ -3,7 +3,8 @@
         "eslint:recommended",
         "prettier",
         "prettier/react",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "plugin:jsx-a11y/recommended"
     ],
     "env": {
         "browser": true,
@@ -18,7 +19,7 @@
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
-    "plugins": ["react", "prettier"],
+    "plugins": ["react", "prettier", "jsx-a11y"],
     "globals": {
         "React": true
     },
