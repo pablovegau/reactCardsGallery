@@ -1,5 +1,5 @@
 {
-    "extends": ["eslint:recommended"],
+    "extends": ["eslint:recommended", "prettier"],
     "env": {
         "browser": true,
         "es6": true,
@@ -12,9 +12,11 @@
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
-    "plugins": ["react"],
+    "plugins": ["react", "prettier"],
     "globals": {
         "React": true
     },
-    "rules": {}
+    "rules": {
+        "prettier/prettier": "error"
+    }
 }

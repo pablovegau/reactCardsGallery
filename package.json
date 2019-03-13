@@ -5,12 +5,17 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint \"**/*.{js,jsx}\"",
-    "validate": "npm run lint"
+    "format": "npm run prettier -- --write",
+    "prettier": "prettier \"**/*.{js,jsx,css,json}\"",
+    "validate": "npm run lint && npm run prettier -- --list-different"
   },
   "author": "Pablo Vega Uceta",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^5.15.1",
-    "eslint-plugin-react": "^7.12.4"
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "prettier": "^1.16.4"
   }
 }
