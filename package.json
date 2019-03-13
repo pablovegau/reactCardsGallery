@@ -9,6 +9,12 @@
     "prettier": "prettier \"**/*.{js,jsx,css,json}\"",
     "validate": "npm run lint && npm run prettier -- --list-different"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run validate",
+      "pre-push": "npm run validate"
+    }
+  },
   "author": "Pablo Vega Uceta",
   "license": "ISC",
   "devDependencies": {
@@ -16,6 +22,7 @@
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
+    "husky": "^1.3.1",
     "prettier": "^1.16.4"
   }
 }
