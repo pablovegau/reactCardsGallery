@@ -2,6 +2,12 @@ import styled from 'styled-components';
 
 import { appColors, appGrayColors } from '../../theme/colors';
 
+const circleButton_borderRadius = '50%';
+const circleButton_height = '4rem';
+const circleButton_width = circleButton_height;
+const circleButton_colorTransitionTime = '0.6s';
+const icon_height = '2rem';
+
 const getComputedStyles = ({ secondary }) => `
   background-color: ${secondary ? appGrayColors.black40 : appColors.primary};
 `;
@@ -11,10 +17,10 @@ export const CircleButtonWrapper = styled.button`
   align-items: center;
   justify-content: center;
   border: none;
-  border-radius: 50%;
-  height: 4rem;
-  width: 4rem;
-  transition: background-color 0.6s;
+  border-radius: ${circleButton_borderRadius};
+  height: ${circleButton_height};
+  width: ${circleButton_width};
+  transition: background-color ${circleButton_colorTransitionTime};
   ${() => getComputedStyles}
 
   &:hover {
@@ -23,7 +29,7 @@ export const CircleButtonWrapper = styled.button`
 
   svg {
     display: block;
-    height: 2rem;
+    height: ${icon_height};
   }
 
   path {
