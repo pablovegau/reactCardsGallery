@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { appGrayColors } from '../../theme/colors';
+import { appGrayColors, sansSerif } from '../../theme';
 
 const reactCardsGallery_width = '100vw';
 const reactCardsGallery_height = '100vh';
@@ -12,10 +12,11 @@ export const Wrapper = styled.div`
   width: ${reactCardsGallery_width};
   height: ${reactCardsGallery_height};
   background-color: ${appGrayColors.black10};
+  font-family: ${sansSerif};
+`;
 
-  .circleButton {
-    position: absolute;
-    bottom: ${button_bottom};
-    right: ${button_right};
-  }
+export const WrapperCircleButton = styled.div`
+  position: absolute;
+  bottom: ${button_bottom};
+  right: ${button_right};
 `;

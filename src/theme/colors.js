@@ -23,5 +23,5 @@ export const appGrayColors = {
 };
 
 export const appSemiTransparentColors = {
-  veil: 'rgba(100, 100, 100, 0.5)',
+  veil: 'rgba(255, 193, 7, .3)',
 };
