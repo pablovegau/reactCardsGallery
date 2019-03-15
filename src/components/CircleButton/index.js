@@ -6,7 +6,7 @@ import { CircleButtonWrapper } from './styles';
 const circleButton = props => {
   const { path, secondary } = props;
   return (
-    <CircleButtonWrapper secondary={secondary} className="circleButton">
+    <CircleButtonWrapper secondary={secondary}>
       <svg viewBox={path.viewBox} data-testid="circleButton">
         <path d={path.d} data-testid="circleButton" />
       </svg>

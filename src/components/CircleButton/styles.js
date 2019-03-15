@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { appColors, appGrayColors } from '../../theme/colors';
+import { appColors, appGrayColors } from '../../theme';
 
 const circleButton_borderRadius = '50%';
 const circleButton_height = '4rem';
@@ -20,6 +20,7 @@ export const CircleButtonWrapper = styled.button`
   border-radius: ${circleButton_borderRadius};
   height: ${circleButton_height};
   width: ${circleButton_width};
+  box-shadow: 0px 0px 19px 1px rgba(0, 0, 0, 0.75);
   transition: background-color ${circleButton_colorTransitionTime};
   ${() => getComputedStyles}
 
