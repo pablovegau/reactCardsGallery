@@ -27,3 +27,9 @@ export const centerWithTransform = `
   top: 50%;
   transform: translate(-50%, -50%);
 `;
+
+export const verticalCenterWithTransform = `
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+`;

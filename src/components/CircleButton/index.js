@@ -16,7 +16,7 @@ const circleButton = props => {
 
 circleButton.propTypes = {
   path: PropTypes.object.isRequired,
-  secondary: PropTypes.boolean,
+  secondary: PropTypes.bool,
 };
 
 export default circleButton;

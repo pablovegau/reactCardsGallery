@@ -1,7 +1,7 @@
 import { appColors, appGrayColors, appSemiTransparentColors } from './colors';
 import { appFontSizes } from './fontSizes';
 import { sansSerif } from './fonts';
-import { appMargin, appPadding, centerWithMargin, centerWithTransform } from './generics';
+import { appMargin, appPadding, centerWithMargin, centerWithTransform, verticalCenterWithTransform } from './generics';
 
 export {
   appColors,
@@ -13,4 +13,5 @@ export {
   appPadding,
   centerWithMargin,
   centerWithTransform,
+  verticalCenterWithTransform,
 };
