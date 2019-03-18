@@ -6,7 +6,6 @@ import { Wrapper, Input, Label } from './styles';
 class FormInput extends Component {
   state = {
     showLabel: true,
-    inputValue: '',
   };
 
   _onShowLabel = () => {
@@ -16,32 +15,22 @@ class FormInput extends Component {
   };
 
   _onHideLabel = () => {
-    if (!this.state.inputValue) {
+    const { valueInParent } = this.props;
+    if (!valueInParent) {
       this.setState({
         showLabel: true,
       });
     }
   };
 
-  _onChangeInput = event => {
-    this.setState({
-      inputValue: event.target.value,
-    });
-  };
-
   render() {
-    const { label } = this.props;
+    const { label, change, valueInParent } = this.props;
 
     return (
       <div>
         <Wrapper>
           {this.state.showLabel ? <Label>{label}</Label> : null}
-          <Input
-            onFocus={this._onShowLabel}
-            onBlur={this._onHideLabel}
-            onChange={this._onChangeInput}
-            value={this.state.inputValue}
-          />
+          <Input onFocus={this._onShowLabel} onBlur={this._onHideLabel} onChange={change} value={valueInParent} />
         </Wrapper>
       </div>
     );
@@ -50,6 +39,8 @@ class FormInput extends Component {
 
 FormInput.propTypes = {
   label: PropTypes.string.isRequired,
+  change: PropTypes.func.isRequired,
+  valueInParent: PropTypes.string,
 };
 
 export default FormInput;

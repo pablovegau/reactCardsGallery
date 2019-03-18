@@ -7,8 +7,7 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case TOGGLE_MODAL:
-      console.log('toggle modal');
-      break;
+      return Object.assign({}, state, { showModal: !state.showModal });
 
     default:
       return state;

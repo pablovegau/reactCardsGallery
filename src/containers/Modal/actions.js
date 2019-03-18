@@ -1,3 +1,3 @@
 export const TOGGLE_MODAL = 'TOGGLE_MODAL';
 
-export const toggleModal = payload => ({ type: TOGGLE_MODAL, payload });
+export const toggleModal = () => ({ type: TOGGLE_MODAL });
