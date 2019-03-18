@@ -3,6 +3,8 @@ import CircleButton from '../../components/CircleButton';
 import Modal from '../Modal';
 import plusIcon from '../../assets/svg/paths/plusIcon';
 
+import CardsBox from '../CardsBox';
+
 import { Wrapper, WrapperCircleButton } from './styles';
 
 class ReactCardsGallery extends Component {
@@ -19,6 +21,7 @@ class ReactCardsGallery extends Component {
   render() {
     return (
       <Wrapper>
+        <CardsBox />
         <WrapperCircleButton onClick={this.onShowModal}>
           <CircleButton path={plusIcon} secondary={false} />
         </WrapperCircleButton>
