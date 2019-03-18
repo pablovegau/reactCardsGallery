@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../components/Button';
 import FormInput from '../../components/FormInput';
+import uniqid from 'uniqid';
 
 import { Wrapper, BackgroundVeil } from './styles';
 
@@ -30,12 +31,25 @@ class Modal extends Component {
     });
   };
 
+  _onSubmitCard = event => {
+    const { createNewCardRequest } = this.props;
+
+    createNewCardRequest({
+      ...this.state,
+      date: Date.now(),
+      id: uniqid(),
+    });
+
+    event.preventDefault();
+    event.stopPropagation();
+  };
+
   render() {
     const { toggleModal } = this.props;
     return (
       <Wrapper>
         <BackgroundVeil onClick={toggleModal} />
-        <form>
+        <form onSubmit={this._onSubmitCard}>
           <h2>New Card</h2>
           <FormInput label="Title" change={this._onChangeTitle} valueInParent={this.state.inputTitle} />
           <FormInput
@@ -53,7 +67,7 @@ class Modal extends Component {
 
 Modal.propTypes = {
   toggleModal: PropTypes.func,
-  modal: PropTypes.object,
+  createNewCardRequest: PropTypes.func,
 };
 
 export default Modal;
