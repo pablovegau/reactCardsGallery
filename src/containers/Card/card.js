@@ -37,8 +37,8 @@ class Card extends Component {
           <p>{slicedDescription}</p>
         </div>
         <Veil showVeil={this.state.showVeil}>
-          <CircleButton path={editIcon} secondary={true} onClick={editExistingCard} />
-          <CircleButton path={deleteIcon} secondary={true} onClick={deleteExistingCard} />
+          <CircleButton path={editIcon} secondary={true} click={editExistingCard} />
+          <CircleButton path={deleteIcon} secondary={true} click={deleteExistingCard} />
         </Veil>
       </Wrapper>
     );

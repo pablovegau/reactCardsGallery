@@ -1,34 +1,19 @@
-import React, { Component } from 'react';
-import CircleButton from '../../components/CircleButton';
-import Modal from '../Modal';
-import plusIcon from '../../assets/svg/paths/plusIcon';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import ReactCardsGallery from './reactCardsGallery';
+import * as actions from '../Modal/actions';
 
-import CardsBox from '../CardsBox';
-
-import { Wrapper, WrapperCircleButton } from './styles';
-
-class ReactCardsGallery extends Component {
-  state = {
-    showModal: false,
+function mapStateToProps(state) {
+  return {
+    modal: state.modal,
   };
-
-  onShowModal = () => {
-    this.setState({
-      showModal: !this.state.showModal,
-    });
-  };
-
-  render() {
-    return (
-      <Wrapper>
-        <CardsBox />
-        <WrapperCircleButton onClick={this.onShowModal}>
-          <CircleButton path={plusIcon} secondary={false} />
-        </WrapperCircleButton>
-        {this.state.showModal ? <Modal showModal={this.state.showModal} clickVeil={this.onShowModal} /> : null}
-      </Wrapper>
-    );
-  }
 }
 
-export default ReactCardsGallery;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(actions, dispatch);
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ReactCardsGallery);

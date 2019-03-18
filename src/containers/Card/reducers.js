@@ -1,6 +1,25 @@
 import { CREATE_NEW_CARD_REQUEST, EDIT_EXISTING_CARD, DELETE_EXISTING_CARD } from './actions';
 
-const reducer = (state = {}, action) => {
+const initialState = {
+  cards: [
+    {
+      id: 'card1',
+      timestamp: 'hora1',
+      title: 'title1',
+      description: 'description1',
+      url: 'url1',
+    },
+    {
+      id: 'card2',
+      timestamp: 'hora2',
+      title: 'title2',
+      description: 'description2',
+      url: 'url2',
+    },
+  ],
+};
+
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_NEW_CARD_REQUEST:
       // return Object.assign({}, state, { cards: [...state.cards, action.payload] });

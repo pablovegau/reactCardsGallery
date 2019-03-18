@@ -3,7 +3,7 @@ import Card from '../Card';
 
 import { Wrapper } from './styles';
 
-class TM_FILENAME_BASE extends Component {
+class CardsBox extends Component {
   render() {
     return (
       <Wrapper>
@@ -32,4 +32,4 @@ class TM_FILENAME_BASE extends Component {
   }
 }
 
-export default TM_FILENAME_BASE;
+export default CardsBox;
