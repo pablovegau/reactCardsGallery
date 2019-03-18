@@ -26,7 +26,7 @@ class Card extends Component {
   };
 
   render() {
-    const { title, description, url = 'https://goo.gl/6ZvMCL', editExistingCard, deleteExistingCard } = this.props;
+    const { title, description, url, editExistingCard, deleteExistingCard } = this.props;
 
     const slicedDescription = this._addDots(description);
 

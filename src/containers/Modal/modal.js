@@ -35,7 +35,9 @@ class Modal extends Component {
     const { createNewCardRequest } = this.props;
 
     createNewCardRequest({
-      ...this.state,
+      title: this.state.inputTitle,
+      description: this.state.inputDescription,
+      url: this.state.inputUrl || 'https://goo.gl/6ZvMCL',
       date: Date.now(),
       id: uniqid(),
     });
