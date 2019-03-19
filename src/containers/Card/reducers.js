@@ -1,31 +1,15 @@
 import { ADD_OR_MODIFY_CARD, DELETE_EXISTING_CARD } from './actions';
+import { state, deleteCard, addOrModifyCard } from './cardModel';
 
-const initialState = {
-  card: [],
-};
-
-const deleteCard = (state, action) => {
-  return Object.assign({}, state, { card: [...state.card.filter(card => card.id !== action.payload)] });
-};
-
-const addOrModifyCard = (state, action) => {
-  const index = state.card.findIndex(card => card.id === action.payload.id);
-  if (index !== -1) {
-    const statePhoto = state.card;
-    statePhoto[index] = action.payload;
-    return Object.assign({}, state, { card: [...statePhoto] });
-  } else {
-    return Object.assign({}, state, { card: [...state.card, action.payload] });
-  }
-};
+const initialState = state();
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_OR_MODIFY_CARD:
-      return addOrModifyCard(state, action);
+      return addOrModifyCard(state, action.payload);
 
     case DELETE_EXISTING_CARD:
-      return deleteCard(state, action);
+      return deleteCard(state, action.payload);
 
     default:
       return state;
