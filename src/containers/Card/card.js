@@ -11,9 +11,15 @@ class Card extends Component {
     showVeil: false,
   };
 
-  onToggleVeil = () => {
+  onShowVeil = () => {
     this.setState({
-      showVeil: !this.state.showVeil,
+      showVeil: true,
+    });
+  };
+
+  onHideVeil = () => {
+    this.setState({
+      showVeil: false,
     });
   };
 
@@ -31,7 +37,7 @@ class Card extends Component {
     const slicedDescription = this._addDots(description);
 
     return (
-      <Wrapper onMouseEnter={this.onToggleVeil} onMouseLeave={this.onToggleVeil}>
+      <Wrapper onMouseEnter={this.onShowVeil} onMouseLeave={this.onHideVeil}>
         <Title backgroundImage={url}>{title}</Title>
         <div>
           <p>{slicedDescription}</p>
