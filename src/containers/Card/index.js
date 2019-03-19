@@ -1,46 +1,20 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import CircleButton from '../../components/CircleButton';
-import editIcon from '../../assets/svg/paths/editIcon';
-import deleteIcon from '../../assets/svg/paths/deleteIcon';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import Card from './card';
+import * as actionsCard from './actions';
+import * as actionsModal from '../Modal/actions';
 
-import { Wrapper, Title, Veil } from './styles.js';
-
-class Card extends Component {
-  state = {
-    showVeil: false,
+function mapStateToProps(state) {
+  return {
+    card: state.card,
   };
-
-  onToggleVeil = () => {
-    this.setState({
-      showVeil: !this.state.showVeil,
-    });
-  };
-
-  render() {
-    const { title, description, url = 'https://goo.gl/6ZvMCL' } = this.props;
-
-    const slicedDescription = description.slice(0, 125) + '...';
-
-    return (
-      <Wrapper onMouseEnter={this.onToggleVeil} onMouseLeave={this.onToggleVeil}>
-        <Title backgroundImage={url}>{title}</Title>
-        <div>
-          <p>{slicedDescription}</p>
-        </div>
-        <Veil showVeil={this.state.showVeil}>
-          <CircleButton path={editIcon} secondary={true} />
-          <CircleButton path={deleteIcon} secondary={true} />
-        </Veil>
-      </Wrapper>
-    );
-  }
 }
 
-Card.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  url: PropTypes.string,
-};
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(Object.assign({}, actionsModal, actionsCard), dispatch);
+}
 
-export default Card;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Card);

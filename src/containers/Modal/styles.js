@@ -24,7 +24,8 @@ const title_fontSize = appFontSizes.xxxl;
 const veil_backgroundColor = appSemiTransparentColors.veil;
 
 export const Wrapper = styled.div`
-  position: relative;
+  position: absolute;
+  top: 0;
   height: ${wrapper_height};
   width: ${wrapper_width};
 

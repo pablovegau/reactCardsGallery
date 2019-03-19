@@ -1,31 +1,20 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Button from '../../components/Button';
-import FormInput from '../../components/FormInput';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import Modal from './modal';
+import * as actionsModal from './actions';
+import * as actionsCard from '../Card/actions';
 
-import { Wrapper, BackgroundVeil } from './styles';
-
-class Modal extends Component {
-  render() {
-    const { clickVeil } = this.props;
-
-    return (
-      <Wrapper>
-        <BackgroundVeil onClick={clickVeil} />
-        <form>
-          <h2>New Card</h2>
-          <FormInput label="Title" />
-          <FormInput label="Description" />
-          <FormInput label="Image (url)" />
-          <Button label="Add" position="center" />
-        </form>
-      </Wrapper>
-    );
-  }
+function mapStateToProps(state) {
+  return {
+    modal: state.modal,
+  };
 }
 
-Modal.propTypes = {
-  clickVeil: PropTypes.func.isRequired,
-};
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(Object.assign({}, actionsModal, actionsCard), dispatch);
+}
 
-export default Modal;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Modal);
