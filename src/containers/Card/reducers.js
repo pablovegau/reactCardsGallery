@@ -1,4 +1,4 @@
-import { CREATE_NEW_CARD_REQUEST, DELETE_EXISTING_CARD } from './actions';
+import { ADD_OR_MODIFY_CARD, DELETE_EXISTING_CARD } from './actions';
 
 const initialState = {
   card: [],
@@ -21,7 +21,7 @@ const addOrModifyCard = (state, action) => {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case CREATE_NEW_CARD_REQUEST:
+    case ADD_OR_MODIFY_CARD:
       return addOrModifyCard(state, action);
 
     case DELETE_EXISTING_CARD:

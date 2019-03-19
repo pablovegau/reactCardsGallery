@@ -53,15 +53,17 @@ class Modal extends Component {
   };
 
   _onSubmitCard = event => {
-    const { createNewCardRequest } = this.props;
+    const { addOrModifyCard, toggleModal } = this.props;
 
-    createNewCardRequest({
+    addOrModifyCard({
       title: this.state.inputTitle,
       description: this.state.inputDescription,
       url: this.state.inputUrl || 'https://goo.gl/6ZvMCL',
       date: this.state.date,
       id: this.state.id,
     });
+
+    toggleModal();
 
     event.preventDefault();
     event.stopPropagation();
@@ -90,7 +92,7 @@ class Modal extends Component {
 
 Modal.propTypes = {
   toggleModal: PropTypes.func,
-  createNewCardRequest: PropTypes.func,
+  addOrModifyCard: PropTypes.func,
   modal: PropTypes.object,
 };
 
