@@ -11,7 +11,28 @@ class Modal extends Component {
     inputTitle: '',
     inputDescription: '',
     inputUrl: '',
+    date: '',
+    id: '',
   };
+
+  componentDidMount() {
+    const { modal } = this.props;
+
+    if (modal && modal.cardToEdit && modal.cardToEdit.id) {
+      this.setState({
+        inputTitle: modal.cardToEdit.title,
+        inputDescription: modal.cardToEdit.description,
+        inputUrl: modal.cardToEdit.url,
+        date: modal.cardToEdit.date,
+        id: modal.cardToEdit.id,
+      });
+    } else {
+      this.setState({
+        id: uniqid(),
+        date: Date.now(),
+      });
+    }
+  }
 
   _onChangeTitle = event => {
     this.setState({
@@ -38,8 +59,8 @@ class Modal extends Component {
       title: this.state.inputTitle,
       description: this.state.inputDescription,
       url: this.state.inputUrl || 'https://goo.gl/6ZvMCL',
-      date: Date.now(),
-      id: uniqid(),
+      date: this.state.date,
+      id: this.state.id,
     });
 
     event.preventDefault();
@@ -70,6 +91,7 @@ class Modal extends Component {
 Modal.propTypes = {
   toggleModal: PropTypes.func,
   createNewCardRequest: PropTypes.func,
+  modal: PropTypes.object,
 };
 
 export default Modal;

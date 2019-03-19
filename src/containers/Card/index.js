@@ -1,7 +1,8 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Card from './card';
-import * as actions from './actions';
+import * as actionsCard from './actions';
+import * as actionsModal from '../Modal/actions';
 
 function mapStateToProps(state) {
   return {
@@ -10,7 +11,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(actions, dispatch);
+  return bindActionCreators(Object.assign({}, actionsModal, actionsCard), dispatch);
 }
 
 export default connect(

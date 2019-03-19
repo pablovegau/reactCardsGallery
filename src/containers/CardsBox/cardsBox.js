@@ -7,10 +7,16 @@ import { Wrapper } from './styles';
 class CardsBox extends Component {
   render() {
     const { card } = this.props;
-    console.log(card.card);
 
     const cardsToShow = card.card.map(card => (
-      <Card title={card.title} description={card.description} url={card.url} date={card.date} key={card.id} />
+      <Card
+        title={card.title}
+        description={card.description}
+        url={card.url}
+        date={card.date}
+        key={card.id}
+        id={card.id}
+      />
     ));
 
     return <Wrapper>{cardsToShow || null}</Wrapper>;

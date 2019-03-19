@@ -26,7 +26,7 @@ class Card extends Component {
   };
 
   render() {
-    const { title, description, url, editExistingCard, deleteExistingCard } = this.props;
+    const { id, title, description, url, date, deleteExistingCard, toggleModal } = this.props;
 
     const slicedDescription = this._addDots(description);
 
@@ -37,8 +37,20 @@ class Card extends Component {
           <p>{slicedDescription}</p>
         </div>
         <Veil showVeil={this.state.showVeil}>
-          <CircleButton path={editIcon} secondary={true} click={editExistingCard} />
-          <CircleButton path={deleteIcon} secondary={true} click={deleteExistingCard} />
+          <CircleButton
+            path={editIcon}
+            secondary={true}
+            click={() =>
+              toggleModal({
+                id,
+                title,
+                description,
+                url,
+                date,
+              })
+            }
+          />
+          <CircleButton path={deleteIcon} secondary={true} click={() => deleteExistingCard(id)} />
         </Veil>
       </Wrapper>
     );
@@ -46,11 +58,13 @@ class Card extends Component {
 }
 
 Card.propTypes = {
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   url: PropTypes.string,
-  editExistingCard: PropTypes.func,
+  date: PropTypes.number.isRequired,
   deleteExistingCard: PropTypes.func,
+  toggleModal: PropTypes.func.isRequired,
 };
 
 export default Card;
