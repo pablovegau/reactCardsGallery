@@ -3,7 +3,7 @@ import CardsBox from './cardsBox';
 
 function mapStateToProps(state) {
   return {
-    card: state.card,
+    cardsBox: state.cardsBox,
   };
 }
 

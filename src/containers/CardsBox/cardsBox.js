@@ -6,9 +6,9 @@ import { Wrapper } from './styles';
 
 class CardsBox extends Component {
   render() {
-    const { card } = this.props;
+    const { cardsBox } = this.props;
 
-    const cardsToShow = card.card.map(card => (
+    const cardsToShow = cardsBox.cards.map(card => (
       <Card
         title={card.title}
         description={card.description}
@@ -16,6 +16,7 @@ class CardsBox extends Component {
         date={card.date}
         key={card.id}
         id={card.id}
+        veil={card.veil}
       />
     ));
 
@@ -24,7 +25,7 @@ class CardsBox extends Component {
 }
 
 CardsBox.propTypes = {
-  card: PropTypes.object,
+  cardsBox: PropTypes.object,
 };
 
 export default CardsBox;
