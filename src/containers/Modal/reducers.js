@@ -18,7 +18,7 @@ export default function reducer(state = initialState, action) {
       return { ...state, showModal: true };
 
     case VEIL_MODAL_PRESSED:
-      return { ...state, showModal: false };
+      return { ...initialState };
 
     case INPUT_TITLE_CHANGED:
       return { ...state, title: action.payload };
