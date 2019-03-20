@@ -11,12 +11,16 @@ const reducer = (state = initialState, action) => {
 
     case MOUSE_OVER_CARD:
       return updateCard(state.cards, { id: action.payload, veil: true });
+
     case MOUSE_OUT_CARD:
       return updateCard(state.cards, { id: action.payload, veil: false });
+
     case BUTTON_DELETE_CARD_PRESSED:
       return { ...state, cards: deleteCard(state.cards, action.payload) };
+
     case BUTTON_MODAL_EDIT_CARD_PRESSED:
       return updateCard(state.cards, { ...action.payload });
+
     default:
       return state;
   }

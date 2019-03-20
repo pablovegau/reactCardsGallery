@@ -36,7 +36,7 @@ class Card extends Component {
         <div>
           <p>{slicedDescription}</p>
         </div>
-        <Veil showVeil={veil}>
+        <Veil showVeil={veil} data-testid="veil">
           <CircleButton
             path={editIcon}
             secondary={true}
@@ -64,7 +64,7 @@ Card.propTypes = {
   url: PropTypes.string,
   date: PropTypes.number.isRequired,
   veil: PropTypes.bool.isRequired,
-  buttonDeleteCardPressed: PropTypes.func,
+  buttonDeleteCardPressed: PropTypes.func.isRequired,
   buttonEditCardPressed: PropTypes.func.isRequired,
   mouseOverCard: PropTypes.func.isRequired,
   mouseOutCard: PropTypes.func.isRequired,

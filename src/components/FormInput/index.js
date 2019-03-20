@@ -7,12 +7,12 @@ const formInput = props => {
   const { label, change, value } = props;
 
   return (
-    <div>
-      <Wrapper>
-        {!value ? <Label>{label}</Label> : null}
-        <Input onChange={change} value={value} />
-      </Wrapper>
-    </div>
+    <Wrapper>
+      <Label htmlFor="genericInput" value={value}>
+        {label}
+      </Label>
+      <Input id="genericInput" onChange={change} value={value} />
+    </Wrapper>
   );
 };
 

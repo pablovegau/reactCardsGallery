@@ -7,6 +7,7 @@ import { Wrapper } from './styles';
 class CardsBox extends Component {
   render() {
     const { cardsBox } = this.props;
+    console.log(cardsBox);
 
     const cardsToShow = cardsBox.cards.map(card => (
       <Card

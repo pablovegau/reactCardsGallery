@@ -8,6 +8,10 @@ const input_maxWidth = '30rem';
 const input_bottomBorder_color = appGrayColors.black30;
 const input_marginBottom = appMargin.m;
 
+const getComputedStyles = ({ value }) => `
+  display: ${value ? 'none' : 'block'};
+`;
+
 export const Wrapper = styled.div`
   position: relative;
   margin-bottom: ${input_marginBottom};
@@ -19,6 +23,7 @@ export const Label = styled.label`
   ${verticalCenterWithTransform};
   left: 5px;
   color: ${appColors.secondaryText};
+  ${() => getComputedStyles}
 `;
 
 export const Input = styled.input`
