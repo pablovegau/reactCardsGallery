@@ -28,7 +28,7 @@ class Modal extends Component {
       buttonAddCardPressed({
         title: modal.title,
         description: modal.description,
-        url: modal.url,
+        url: modal.url || 'https://goo.gl/6ZvMCL',
         date: Date.now(),
         id: uniqid(),
       });
