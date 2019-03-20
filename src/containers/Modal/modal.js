@@ -7,92 +7,69 @@ import uniqid from 'uniqid';
 import { Wrapper, BackgroundVeil } from './styles';
 
 class Modal extends Component {
-  state = {
-    inputTitle: '',
-    inputDescription: '',
-    inputUrl: '',
-    date: '',
-    id: '',
-  };
-
-  componentDidMount() {
-    const { modal } = this.props;
-
-    if (modal && modal.cardToEdit && modal.cardToEdit.id) {
-      this.setState({
-        inputTitle: modal.cardToEdit.title,
-        inputDescription: modal.cardToEdit.description,
-        inputUrl: modal.cardToEdit.url,
-        date: modal.cardToEdit.date,
-        id: modal.cardToEdit.id,
-      });
-    } else {
-      this.setState({
-        id: uniqid(),
-        date: Date.now(),
-      });
-    }
-  }
-
   _onChangeTitle = event => {
-    this.setState({
-      inputTitle: event.target.value,
-    });
+    const { inputTitleChanged } = this.props;
+    inputTitleChanged(event.target.value);
   };
 
   _onChangeDescription = event => {
-    this.setState({
-      inputDescription: event.target.value,
-    });
+    const { inputDescriptionChanged } = this.props;
+    inputDescriptionChanged(event.target.value);
   };
 
   _onChangeUrl = event => {
-    this.setState({
-      inputUrl: event.target.value,
-    });
+    const { inputUrlChanged } = this.props;
+    inputUrlChanged(event.target.value);
   };
 
   _onSubmitCard = event => {
-    const { addOrModifyCard, toggleModal } = this.props;
-
-    addOrModifyCard({
-      title: this.state.inputTitle,
-      description: this.state.inputDescription,
-      url: this.state.inputUrl || 'https://goo.gl/6ZvMCL',
-      date: this.state.date,
-      id: this.state.id,
-    });
-
-    toggleModal();
-
+    const { buttonAddCardPressed, buttonModalEditCardPressed, modal } = this.props;
+    if (!modal.edition) {
+      buttonAddCardPressed({
+        title: modal.title,
+        description: modal.description,
+        url: modal.url,
+        date: Date.now(),
+        id: uniqid(),
+      });
+    } else {
+      buttonModalEditCardPressed({
+        title: modal.title,
+        description: modal.description,
+        url: modal.url,
+        id: modal.id,
+      });
+    }
     event.preventDefault();
     event.stopPropagation();
   };
 
   render() {
-    const { toggleModal } = this.props;
+    const { veilModalPressed, modal } = this.props;
     return (
-      <Wrapper>
-        <BackgroundVeil onClick={toggleModal} />
-        <form onSubmit={this._onSubmitCard}>
-          <h2>New Card</h2>
-          <FormInput label="Title" change={this._onChangeTitle} valueInParent={this.state.inputTitle} />
-          <FormInput
-            label="Description"
-            change={this._onChangeDescription}
-            valueInParent={this.state.inputDescription}
-          />
-          <FormInput label="Image (url)" change={this._onChangeUrl} valueInParent={this.state.inputUrl} />
-          <Button label="Add" position="center" />
-        </form>
-      </Wrapper>
+      modal.showModal && (
+        <Wrapper>
+          <BackgroundVeil onClick={veilModalPressed} />
+          <form onSubmit={this._onSubmitCard}>
+            <h2>New Card</h2>
+            <FormInput label="Title" change={this._onChangeTitle} value={modal.title} />
+            <FormInput label="Description" change={this._onChangeDescription} value={modal.description} />
+            <FormInput label="Image (url)" change={this._onChangeUrl} value={modal.url} />
+            <Button label={modal.edition ? 'EDIT' : 'ADD'} position="center" />
+          </form>
+        </Wrapper>
+      )
     );
   }
 }
 
 Modal.propTypes = {
-  toggleModal: PropTypes.func,
-  addOrModifyCard: PropTypes.func,
+  veilModalPressed: PropTypes.func,
+  inputTitleChanged: PropTypes.func,
+  inputDescriptionChanged: PropTypes.func,
+  inputUrlChanged: PropTypes.func,
+  buttonAddCardPressed: PropTypes.func,
+  buttonModalEditCardPressed: PropTypes.func,
   modal: PropTypes.object,
 };
 

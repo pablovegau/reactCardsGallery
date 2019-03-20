@@ -10,22 +10,21 @@ import { Wrapper, WrapperCircleButton } from './styles';
 
 class ReactCardsGallery extends Component {
   render() {
-    const { toggleModal, modal } = this.props;
+    const { addCardButtonPressed } = this.props;
     return (
       <Wrapper>
         <CardsBox />
         <WrapperCircleButton>
-          <CircleButton path={plusIcon} secondary={false} click={toggleModal} />
+          <CircleButton path={plusIcon} secondary={false} click={addCardButtonPressed} />
         </WrapperCircleButton>
-        {modal.showModal ? <Modal /> : null}
+        <Modal />
       </Wrapper>
     );
   }
 }
 
 ReactCardsGallery.propTypes = {
-  toggleModal: PropTypes.func.isRequired,
-  modal: PropTypes.object,
+  addCardButtonPressed: PropTypes.func.isRequired,
 };
 
 export default ReactCardsGallery;

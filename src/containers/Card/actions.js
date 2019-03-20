@@ -1,5 +1,9 @@
-export const ADD_OR_MODIFY_CARD = 'CREATE_A_CARD_REQUEST';
-export const DELETE_EXISTING_CARD = 'DELETE_EXISTING_CARD';
+export const MOUSE_OVER_CARD = 'MOUSE_OVER_CARD';
+export const MOUSE_OUT_CARD = 'MOUSE_OUT_CARD';
+export const BUTTON_EDIT_CARD_PRESSED = 'BUTTON_EDIT_CARD_PRESSED';
+export const BUTTON_DELETE_CARD_PRESSED = 'BUTTON_DELETE_CARD_PRESSED';
 
-export const addOrModifyCard = payload => ({ type: ADD_OR_MODIFY_CARD, payload });
-export const deleteExistingCard = payload => ({ type: DELETE_EXISTING_CARD, payload });
+export const mouseOverCard = payload => ({ type: MOUSE_OVER_CARD, payload });
+export const mouseOutCard = payload => ({ type: MOUSE_OUT_CARD, payload });
+export const buttonEditCardPressed = payload => ({ type: BUTTON_EDIT_CARD_PRESSED, payload });
+export const buttonDeleteCardPressed = payload => ({ type: BUTTON_DELETE_CARD_PRESSED, payload });

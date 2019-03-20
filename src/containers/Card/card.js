@@ -7,20 +7,14 @@ import deleteIcon from '../../assets/svg/paths/deleteIcon';
 import { Wrapper, Title, Veil } from './styles.js';
 
 class Card extends Component {
-  state = {
-    showVeil: false,
-  };
-
   onShowVeil = () => {
-    this.setState({
-      showVeil: true,
-    });
+    const { mouseOverCard, id } = this.props;
+    mouseOverCard(id);
   };
 
   onHideVeil = () => {
-    this.setState({
-      showVeil: false,
-    });
+    const { mouseOutCard, id } = this.props;
+    mouseOutCard(id);
   };
 
   _addDots = text => {
@@ -32,7 +26,7 @@ class Card extends Component {
   };
 
   render() {
-    const { id, title, description, url, date, deleteExistingCard, toggleModal } = this.props;
+    const { id, title, description, url, date, veil, buttonEditCardPressed, buttonDeleteCardPressed } = this.props;
 
     const slicedDescription = this._addDots(description);
 
@@ -42,12 +36,12 @@ class Card extends Component {
         <div>
           <p>{slicedDescription}</p>
         </div>
-        <Veil showVeil={this.state.showVeil}>
+        <Veil showVeil={veil}>
           <CircleButton
             path={editIcon}
             secondary={true}
             click={() =>
-              toggleModal({
+              buttonEditCardPressed({
                 id,
                 title,
                 description,
@@ -56,7 +50,7 @@ class Card extends Component {
               })
             }
           />
-          <CircleButton path={deleteIcon} secondary={true} click={() => deleteExistingCard(id)} />
+          <CircleButton path={deleteIcon} secondary={true} click={() => buttonDeleteCardPressed(id)} />
         </Veil>
       </Wrapper>
     );
@@ -69,8 +63,11 @@ Card.propTypes = {
   description: PropTypes.string.isRequired,
   url: PropTypes.string,
   date: PropTypes.number.isRequired,
-  deleteExistingCard: PropTypes.func,
-  toggleModal: PropTypes.func.isRequired,
+  veil: PropTypes.bool.isRequired,
+  buttonDeleteCardPressed: PropTypes.func,
+  buttonEditCardPressed: PropTypes.func.isRequired,
+  mouseOverCard: PropTypes.func.isRequired,
+  mouseOutCard: PropTypes.func.isRequired,
 };
 
 export default Card;
