@@ -1,5 +1,7 @@
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import CardsBox from './cardsBox';
+import * as actions from './actions';
 
 function mapStateToProps(state) {
   return {
@@ -7,4 +9,11 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(CardsBox);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(actions, dispatch);
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(CardsBox);
