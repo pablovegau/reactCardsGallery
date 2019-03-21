@@ -6,9 +6,9 @@ import { CircleButtonWrapper } from './styles';
 const circleButton = props => {
   const { path, secondary, click } = props;
   return (
-    <CircleButtonWrapper secondary={secondary} onClick={click}>
-      <svg viewBox={path.viewBox} data-testid="circleButton">
-        <path d={path.d} data-testid="circleButton" />
+    <CircleButtonWrapper secondary={secondary} onClick={click} data-testid="circleButton">
+      <svg viewBox={path.viewBox} data-testid="circleButtonSvg">
+        <path d={path.d} data-testid="circleButtonPath" />
       </svg>
     </CircleButtonWrapper>
   );
@@ -17,7 +17,7 @@ const circleButton = props => {
 circleButton.propTypes = {
   path: PropTypes.object.isRequired,
   secondary: PropTypes.bool,
-  click: PropTypes.func.isRequired,
+  click: PropTypes.func,
 };
 
 export default circleButton;

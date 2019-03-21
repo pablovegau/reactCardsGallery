@@ -24,22 +24,26 @@ class Modal extends Component {
 
   _onSubmitCard = event => {
     const { buttonAddCardPressed, buttonModalEditCardPressed, modal } = this.props;
-    if (!modal.edition) {
-      buttonAddCardPressed({
-        title: modal.title,
-        description: modal.description,
-        url: modal.url || 'https://goo.gl/6ZvMCL',
-        date: Date.now(),
-        id: uniqid(),
-      });
-    } else {
-      buttonModalEditCardPressed({
-        title: modal.title,
-        description: modal.description,
-        url: modal.url,
-        id: modal.id,
-      });
+
+    if (modal.title && modal.description) {
+      if (!modal.edition) {
+        buttonAddCardPressed({
+          title: modal.title,
+          description: modal.description,
+          url: modal.url || 'https://goo.gl/6ZvMCL',
+          date: Date.now(),
+          id: uniqid(),
+        });
+      } else {
+        buttonModalEditCardPressed({
+          title: modal.title,
+          description: modal.description,
+          url: modal.url,
+          id: modal.id,
+        });
+      }
     }
+
     event.preventDefault();
     event.stopPropagation();
   };
