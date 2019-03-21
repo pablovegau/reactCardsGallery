@@ -56,9 +56,14 @@ class Modal extends Component {
           <BackgroundVeil onClick={veilModalPressed} />
           <form onSubmit={this._onSubmitCard}>
             <h2>New Card</h2>
-            <FormInput label="Title" change={this._onChangeTitle} value={modal.title} />
-            <FormInput label="Description" change={this._onChangeDescription} value={modal.description} />
-            <FormInput label="Image (url)" change={this._onChangeUrl} value={modal.url} />
+            <FormInput label="Title" change={this._onChangeTitle} value={modal.title} idHtmlFor="title" />
+            <FormInput
+              label="Description"
+              change={this._onChangeDescription}
+              value={modal.description}
+              idHtmlFor="description"
+            />
+            <FormInput label="Image (url)" change={this._onChangeUrl} value={modal.url} idHtmlFor="url" />
             <Button label={modal.edition ? 'EDIT' : 'ADD'} position="center" />
           </form>
         </Wrapper>
@@ -74,7 +79,7 @@ Modal.propTypes = {
   inputUrlChanged: PropTypes.func,
   buttonAddCardPressed: PropTypes.func,
   buttonModalEditCardPressed: PropTypes.func,
-  modal: PropTypes.object,
+  modal: PropTypes.object.isRequired,
 };
 
 export default Modal;

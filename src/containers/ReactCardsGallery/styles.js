@@ -10,13 +10,13 @@ const button_right = button_bottom;
 export const Wrapper = styled.div`
   position: relative;
   width: ${reactCardsGallery_width};
-  height: ${reactCardsGallery_height};
+  min-height: ${reactCardsGallery_height};
   background-color: ${appGrayColors.black10};
   font-family: ${sansSerif};
 `;
 
 export const WrapperCircleButton = styled.div`
-  position: absolute;
+  position: fixed;
   bottom: ${button_bottom};
   right: ${button_right};
 `;
