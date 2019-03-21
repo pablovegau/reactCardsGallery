@@ -22,6 +22,6 @@ export const deleteCard = (state, action) => {
   return newState;
 };
 
-export const compareByTitle = (a, b) => (a.title > b.title ? 1 : -1);
+export const compareByTitle = (a, b) => (a.title.toUpperCase() > b.title.toUpperCase() ? 1 : -1);
 
 export const compareByDate = (a, b) => (a.date > b.date ? 1 : -1);
