@@ -28,6 +28,7 @@ export default function reducer(state = initialState, action) {
 
     case INPUT_URL_CHANGED:
       return { ...state, url: action.payload };
+
     case BUTTON_EDIT_CARD_PRESSED:
       return { ...action.payload, showModal: true, edition: true };
 

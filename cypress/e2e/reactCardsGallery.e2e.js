@@ -7,7 +7,7 @@ describe('React Cards Gallery', () => {
       .click()
       .getByLabelText('Title')
       .type(title)
-      .get(':nth-child(3) > #genericInput')
+      .getByLabelText('Description')
       .type(description)
       .getByText('ADD')
       .click();
