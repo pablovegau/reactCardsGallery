@@ -2,9 +2,8 @@ import styled from 'styled-components';
 
 import { appGrayColors, appFontSizes, appSemiTransparentColors, appPadding, appMargin } from '../../theme';
 
-const card_MaxWidth = '23.4375rem';
-const card_MinWidth = '18.75rem';
-const card_margin = appMargin.m;
+const card_width = '23.4375rem';
+const card_margin = appMargin.s;
 const title_padding = appPadding.s;
 const title_height = '12.5rem';
 const description_minHeight = '6.25rem;';
@@ -23,8 +22,7 @@ const getComputedVeilDisplay = ({ showVeil }) => `
 export const Wrapper = styled.div`
   position: relative;
   margin: ${card_margin};
-  max-width: ${card_MaxWidth};
-  min-width: ${card_MinWidth};
+  width: ${card_width};
   box-shadow: 0px 15px 29px -5px rgba(0, 0, 0, 0.5);
 
   p {
