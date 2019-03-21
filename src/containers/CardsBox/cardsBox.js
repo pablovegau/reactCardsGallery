@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Button from '../../components/Button';
 import Card from '../Card';
 
-import { Wrapper } from './styles';
+import { Wrapper, ButtonsOrderWrapper, CardsWrapper } from './styles';
 
 class CardsBox extends Component {
   render() {
-    const { cardsBox } = this.props;
-    console.log(cardsBox);
+    const { cardsBox, buttonOrderByTitlePressed, buttonOrderByDatePressed } = this.props;
 
     const cardsToShow = cardsBox.cards.map(card => (
       <Card
@@ -21,12 +21,24 @@ class CardsBox extends Component {
       />
     ));
 
-    return <Wrapper>{cardsToShow || null}</Wrapper>;
+    return (
+      <Wrapper>
+        {cardsBox.cards.length > 1 && (
+          <ButtonsOrderWrapper>
+            <Button label="Order by title" click={buttonOrderByTitlePressed} />
+            <Button label="Order by date" click={buttonOrderByDatePressed} />
+          </ButtonsOrderWrapper>
+        )}
+        <CardsWrapper>{cardsToShow || null}</CardsWrapper>
+      </Wrapper>
+    );
   }
 }
 
 CardsBox.propTypes = {
   cardsBox: PropTypes.object,
+  buttonOrderByDatePressed: PropTypes.func,
+  buttonOrderByTitlePressed: PropTypes.func,
 };
 
 export default CardsBox;

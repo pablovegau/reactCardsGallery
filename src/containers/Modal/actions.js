@@ -6,7 +6,6 @@ export const BUTTON_ADD_CARD_PRESSED = 'BUTTON_ADD_CARD_PRESSED';
 export const BUTTON_MODAL_EDIT_CARD_PRESSED = 'BUTTON_MODAL_EDIT_CARD_PRESSED';
 
 export const veilModalPressed = () => ({ type: VEIL_MODAL_PRESSED });
-
 export const inputTitleChanged = payload => ({ type: INPUT_TITLE_CHANGED, payload });
 export const inputDescriptionChanged = payload => ({ type: INPUT_DESCRIPTION_CHANGED, payload });
 export const inputUrlChanged = payload => ({ type: INPUT_URL_CHANGED, payload });
