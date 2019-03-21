@@ -25,6 +25,7 @@ const button_verticalPadding = appPadding.s;
 const button_fontSize = appFontSizes.xl;
 const button_fontColor = appGrayColors.white;
 const button_borderRadius = '.3rem';
+const button_colorTransitionTime = '0.6s';
 
 export const Button = styled.button`
   display: block;
@@ -33,6 +34,12 @@ export const Button = styled.button`
   background-color: ${appColors.primary};
   color: ${button_fontColor};
   font-size: ${button_fontSize};
+  cursor: pointer;
   text-transform: uppercase;
+  transition: background-color ${button_colorTransitionTime};
   ${props => getPositionParameters({ position: props.position })}
+
+  &:hover {
+    background-color: ${appColors.darkPrimary};
+  }
 `;
